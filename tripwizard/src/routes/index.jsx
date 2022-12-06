@@ -8,7 +8,7 @@ export default function Index() {
     return (
       <div id="zero-state">
         <Card className="text-center">
-          <Card.Header>About Trip Wizard</Card.Header>
+          <Card.Header><b>About Trip Wizard</b></Card.Header>
           <Card.Body>
             <Card.Text>
                 <div className='textIndent1'>
@@ -16,7 +16,7 @@ export default function Index() {
                 </div>
                 <br />
                 <div className='textIndent2'>
-                While planning a 10-day European vacation for 12 people (yes 12!) Lindsay had a terrible time. No one ever knew what was going on and they were constantly asking her what the plans were. All she wanted was a place to keep, see, share, and update plans easily.   
+                While planning a 10-day European vacation for 12 people (yes 12!) Lindsay had a terrible time. No one ever knew what was going on and they were constantly asking her what the plans were. <b>All she wanted was a place to keep, see, share, and update plans easily!</b>
                 </div>  
                 <br />
                 <div className='textIndent3'>

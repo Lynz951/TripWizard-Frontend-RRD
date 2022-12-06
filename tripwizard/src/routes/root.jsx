@@ -24,7 +24,7 @@ export default function Root() {
     const navigate = useNavigate();
       
     function handlesubmit() {
-      navigate("createtrip");
+      navigate('/createtrip/');
     }
 
     return (
@@ -50,9 +50,7 @@ export default function Root() {
                 aria-live="polite"
               ></div>
             </form>
-            <Form method="post" onSubmit={handlesubmit}>
-                <button type="submit">New Trip</button>
-            </Form>
+            <button type="submit" onClick={handlesubmit}>New Trip</button>
           </div>
           <nav>
             <h1>My Trips</h1>

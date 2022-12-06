@@ -1,22 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
-import {
-  MDBNavbar,
-  MDBContainer,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBDropdown,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBDropdownItem,
-} from 'mdb-react-ui-kit';
-
 import { createTrip } from "../trips";
 
 export async function action (){
@@ -30,20 +14,18 @@ export default function NewTripForm() {
     end_date: "",
     description: "",
   });
-  const handleChange = (event) => {
-    setTripInfo({...tripInfo, [event.target.name]: event.target.value });
-  };
+    const handleChange = (event) => {
+        setTripInfo({...tripInfo, [event.target.name]: event.target.value });
+    };
   
-  const handleSubmit= (event) => {
-    event.preventDefault();
-    console.log(tripInfo);
-    addTrip();
-    setTripInfo({ name: "", start_date: "", end_date: "", description: ""});
-  };
-
+    const handleSubmit= (event) => {
+        event.preventDefault();
+        console.log(tripInfo);
+        addTrip();
+        setTripInfo({ name: "", start_date: "", end_date: "", description: ""});
+    };
+    
     const addTrip = () => {
-
-        // todo: add axios call to save the data
         var data = tripInfo;
         
         axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/trip/', 

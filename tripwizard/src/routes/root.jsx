@@ -1,5 +1,6 @@
 import { 
     Outlet, 
+    NavLink,
     Link, 
     useLoaderData,
     Form,
@@ -8,11 +9,9 @@ import { getTrips, createTrip } from "../trips";
 import React from 'react';
 import "../index.css";
 
-
-
 export async function loader() {
     const trips = await getTrips();
-    return { trips };
+    return trips ;
   }
   
 export async function action() {
@@ -54,7 +53,16 @@ export default function Root() {
             <ul>
               {trips.map((trip) => (
                 <li key={trip.id}>
-                  <Link to={`trips/${trip.id}`}>
+                  <NavLink 
+                    to={`trips/${trip.id}`}
+                    className={({ isActive, isPending }) =>
+                    isActive
+                    ? "active"
+                    : isPending
+                    ? "pending"
+                    : ""
+              }
+                >
                     {trip.name ? (
                       <>
                         {trip.name}
@@ -63,10 +71,10 @@ export default function Root() {
                       <i>No Name</i>
                     )}{" "}
                     {trip.favorite && <span>★</span>}
-                  </Link>
-                </li>
+                  </NavLink>
+                  </li>
               ))}
-            </ul>
+               </ul>
           ) : (
             <p>
               <i>No trips</i>

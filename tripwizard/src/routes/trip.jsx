@@ -3,30 +3,35 @@ import {
     useLoaderData,  
  } from "react-router-dom";
  import { getTrip } from "../trips";
+ import sunset from '../sunsetbeach.jpeg';
+ import { format, compareAsc } from "date-fns";
+
+
 
 export async function loader({ params }) {
   return getTrip(params.tripId);
 }
 
 export default function Trip() {
+
   const trip = useLoaderData();
+  const startDate = format(new Date(trip.start_date), 'MM/dd/yyyy')
+  const endDate = format(new Date(trip.end_date), 'MM/dd/yyyy')
 
   return (
-    console.log(trip),
     <div id="trip">
       <div>
         <img
-          key={trip.avatar}
-          src={trip.avatar || null}
+          src= {sunset}
         />
       </div>
 
       <div>
         {trip.name && <h1>{trip.name}</h1>}
         <h2>
-          {trip.start_date || trip.end_date ? (
+          {startDate || endDate ? (
             <>
-              {trip.start_date} {trip.end_date}
+              Leave: {startDate} Return: {endDate}
             </>
           ) : (
             <i>No Dates</i>

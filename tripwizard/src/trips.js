@@ -3,7 +3,6 @@ import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 
 export async function getTrips(query) {
-  await fakeNetwork(`getTrips:${query}`);
   let trips = await localforage.getItem("trips");
   if (!trips) trips = [];
   if (query) {
@@ -23,17 +22,17 @@ export async function createTrip() {
 }
 
 export async function getTrip(id) {
-  await fakeNetwork(`trip:${id}`);
+  let tripId = Number(id);
   let trips = await localforage.getItem("trips");
-  let trip = trips.find(trip => trip.id === id);
+  let trip = trips.find(trip => trip.id === tripId);
   return trip ?? null;
 }
 
 export async function updateTrip(id, updates) {
-  await fakeNetwork();
+  let tripId = Number(id);
   let trips = await localforage.getItem("trips");
-  let trip = trips.find(trip => trip.id === id);
-  if (!trip) throw new Error("No trip found for", id);
+  let trip = trips.find(trip => trip.id === tripId);
+  if (!trip) throw new Error("No trip found for", tripId);
   Object.assign(trip, updates);
   await set(trips);
   return trip;

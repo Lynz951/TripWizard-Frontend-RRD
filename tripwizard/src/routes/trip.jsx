@@ -6,8 +6,6 @@ import {
  import sunset from '../sunsetbeach.jpeg';
  import { format, compareAsc } from "date-fns";
 
-
-
 export async function loader({ params }) {
   return getTrip(params.tripId);
 }

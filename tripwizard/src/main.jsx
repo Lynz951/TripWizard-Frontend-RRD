@@ -15,6 +15,7 @@ import Trip, {
   loader as tripLoader,
 } from './routes/trip';
 import Index from "./routes/index";
+import NewTripForm from './components/NewTripForm';
 import localForage from "localforage";
 
 const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/trip/");
@@ -28,6 +29,8 @@ const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us7
     // we got an error
     console.log(err);
   });
+
+
   
 
 const router = createBrowserRouter([
@@ -41,9 +44,13 @@ const router = createBrowserRouter([
       { index: true, element: <Index />},
       {
         path: "trips/:tripId",
-        loader: tripLoader,
         element: <Trip />,
+        loader: tripLoader,
       },
+      {
+        path: "createtrip",
+        element: <NewTripForm />
+      }
     ]
   },
 ]);

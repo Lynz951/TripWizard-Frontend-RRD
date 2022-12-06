@@ -439,7 +439,7 @@ i {
 }
 
 #zero-state:before {
-  display: block;
+  align-items: initial;
   margin-bottom: 0.5rem;
   content: url("./Travellersonvanwithwords.png");
   height: 50px;

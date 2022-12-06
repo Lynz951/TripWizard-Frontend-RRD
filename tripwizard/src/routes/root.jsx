@@ -4,8 +4,9 @@ import {
     Link, 
     useLoaderData,
     Form,
+    useNavigate,
  } from "react-router-dom";
-import { getTrips, createTrip } from "../trips";
+import { getTrips } from "../trips";
 import React from 'react';
 import "../index.css";
 
@@ -13,14 +14,19 @@ export async function loader() {
     const trips = await getTrips();
     return trips ;
   }
-  
-export async function action() {
-    await createTrip();
+
+  export async function action() {
+    return null;
   }
 
 export default function Root() {
     const trips = useLoaderData();
-    console.log(trips) 
+    const navigate = useNavigate();
+      
+    function handlesubmit() {
+      navigate("createtrip");
+    }
+
     return (
       <>
         <div id="sidebar">
@@ -44,11 +50,12 @@ export default function Root() {
                 aria-live="polite"
               ></div>
             </form>
-            <Form method="post">
+            <Form method="post" onSubmit={handlesubmit}>
                 <button type="submit">New Trip</button>
             </Form>
           </div>
           <nav>
+            <h1>My Trips</h1>
           {trips.length ? (
             <ul>
               {trips.map((trip) => (

@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 export default function Index() {
     return (
       <div id="zero-state">
-           <Card className="text-center">
+        <Card className="text-center">
           <Card.Header>About Trip Wizard</Card.Header>
           <Card.Body>
             <Card.Text>
@@ -20,10 +20,9 @@ export default function Index() {
                 </div>  
                 <br />
                 <div className='textIndent3'>
-                TripWizard is a place where a group travelling together can store their plans easily. Plans include flights, hotel reservations, activities, and just about anything else you can come up with! They can then view their itinerary in an easy to read and understand format. Sharing your plans and itinerary with group members is fast and can be done with the push of a button! Once you have created a profile you can create a trip and add plans to it throughout your planning process. Trips are saved even after you've taken them so that all of your plans are available forever. We hope this makes planning your group trip super easy and you are encouraged to do more!
+                TripWizard is a place where a group travelling together can store their plans easily. Plans include flights, hotel reservations, activities, and just about anything else you can come up with! They can then view their itinerary in an easy to read and understand format. Sharing your plans and itinerary with group members is fast and can be done with the push of a button! You can create a trip and add plans to it throughout your planning process. Trips are saved even after you've taken them so that all of your plans are available forever. We hope this makes planning your group trip super easy and you are encouraged to go on more!
                 </div>
             </Card.Text>
-            <Button variant="primary">Join Now!</Button>
           </Card.Body>
           {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
         </Card>

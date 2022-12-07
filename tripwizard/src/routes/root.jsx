@@ -32,7 +32,7 @@ export default function Root() {
         <div id="sidebar">
           <h1>Trip Wizard</h1>
           <div>
-            <form id="search-form" role="search">
+            {/* <form id="search-form" role="search">
               <input
                 id="q"
                 aria-label="Search trips"
@@ -49,7 +49,7 @@ export default function Root() {
                 className="sr-only"
                 aria-live="polite"
               ></div>
-            </form>
+            </form> */}
             <button type="submit" onClick={handlesubmit}>New Trip</button>
           </div>
           <nav>

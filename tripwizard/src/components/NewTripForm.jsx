@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { createTrip } from "../trips";
+import { Navigate,
+        useNavigate,
+     } from 'react-router-dom';
 
 export async function action (){
     // something else
 }
 
 export default function NewTripForm() {
+    const navigate = useNavigate();
   const [tripInfo, setTripInfo] = useState({
     name: "",
     start_date: "",
@@ -90,7 +94,18 @@ export default function NewTripForm() {
                 </div>
             </div>
             
-            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save Trip</button>
+            <button type="submit" 
+                    onClick={handleSubmit}
+                    >
+                    Save Trip
+            </button>
+            <button type="button" 
+                    onClick={() => { 
+                    navigate(-1);
+            }}
+            >
+                    Cancel
+            </button>
         </form>
         </div>
     </div>

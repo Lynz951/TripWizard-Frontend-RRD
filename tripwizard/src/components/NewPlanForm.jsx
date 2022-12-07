@@ -111,22 +111,20 @@ export default function NewPlanForm() {
                     <input type="text" 
                             name="notes" 
                             id="Plan Notes"
-                            value={planInfo.notes} onChange={handleChange}/>
-                            
+                            value={planInfo.notes} onChange={handleChange}/> 
                 </div>
             </div>
-            
             <button type="submit" 
-                    onClick={handleSubmit}
-                    >
-                    Save Trip
+                onClick={handleSubmit}
+                >
+                Save Plan
             </button>
             <button type="button" 
-                    onClick={() => { 
-                    navigate(-1);
-            }}
-            >
-                    Cancel
+                onClick={() => { 
+                navigate(-1);
+                }}
+                >
+                Cancel
             </button>
         </form>
         </div>

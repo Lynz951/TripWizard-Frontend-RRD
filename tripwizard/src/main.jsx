@@ -16,6 +16,7 @@ import Trip, {
 } from './routes/trip';
 import Index from "./routes/index";
 import NewTripForm from './components/NewTripForm';
+import NewPlanForm from './components/NewPlanForm';
 import localForage from "localforage";
 
 const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/trip/");
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "createtrip",
         element: <NewTripForm />
+      },
+      { 
+        path: "createplan",
+        element: <NewPlanForm />
       }
     ]
   },

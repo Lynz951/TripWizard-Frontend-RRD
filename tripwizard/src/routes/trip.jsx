@@ -1,4 +1,7 @@
-import { Form, useLoaderData } from "react-router-dom";
+import {  Form, 
+          useLoaderData,
+          useNavigate,
+         } from "react-router-dom";
 import { getTrip } from "../trips";
 import sunset from "../sunsetbeach.jpeg";
 import { format, compareAsc } from "date-fns";
@@ -16,11 +19,11 @@ export default function Trip() {
   const startDate = format(new Date(trip.start_date), "MM/dd/yyyy");
   const endDate = format(new Date(trip.end_date), "MM/dd/yyyy");
   const [data, setData] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // function handlesubmit() {
-  //   navigate('/createplan/');
-  // }
+  function handlesubmit() {
+    navigate('/createplan/');
+  }
 
   useEffect(() => {
     axios
@@ -33,9 +36,7 @@ export default function Trip() {
   }, [trip]);
   console.log({ trip });
   console.log(data);
-  // if (data.length === 0) {
-  //   return null;
-  // }
+
 
   return (
     <>
@@ -78,9 +79,9 @@ export default function Trip() {
       </div>
       <div id="plans">
         <h1>ITINERARY</h1>
-        {/* <div>
-            <button type="submit" onClick={handlesubmit}>New Trip</button>
-            </div> */}
+        <div>
+            <button type="submit" onClick={handlesubmit}>New Plan</button>
+            </div>
         <ul>
           {data.map((plan) => {
             return (
@@ -146,8 +147,8 @@ export default function Trip() {
                   <br />
                   Location: {plan.dep_location}
                 </h5>
-                <div class="container">
-                <button type="submit">View Details</button>
+                <div className="container">
+                <button type="submit">Details</button>
                 <Form action="edit">
                   <button type="submit">Edit</button>
                 </Form>

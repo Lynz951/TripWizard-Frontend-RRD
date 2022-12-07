@@ -32,24 +32,6 @@ export default function Root() {
         <div id="sidebar">
           <h1>Trip Wizard</h1>
           <div>
-            {/* <form id="search-form" role="search">
-              <input
-                id="q"
-                aria-label="Search trips"
-                placeholder="Search"
-                type="search"
-                name="q"
-              />
-              <div
-                id="search-spinner"
-                aria-hidden
-                hidden={true}
-              />
-              <div
-                className="sr-only"
-                aria-live="polite"
-              ></div>
-            </form> */}
             <button type="submit" onClick={handlesubmit}>New Trip</button>
           </div>
           <nav>

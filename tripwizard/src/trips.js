@@ -29,6 +29,13 @@ export async function createTrip(trip) {
   return trip;
 }
 
+export async function createPlan(plan) {
+  let plans = await getPlans();
+  plans.unshift(plan);
+  await set(plans);
+  return plan;
+}
+
 export async function updateTrip(id, updates) {
   let tripId = Number(id);
   let trips = await localforage.getItem("trips");

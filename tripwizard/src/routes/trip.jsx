@@ -28,7 +28,7 @@ export default function Trip() {
   useEffect(() => {
     axios
       .get(
-        `https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/plan/${trip.id}/`
+        `https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/plan/${trip.id}/`
       )
       .then((response) => {
         setData(response.data);

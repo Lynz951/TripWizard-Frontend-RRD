@@ -19,7 +19,7 @@ import NewTripForm from './components/NewTripForm';
 import NewPlanForm from './components/NewPlanForm';
 import localForage from "localforage";
 
-const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/trip/");
+const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/");
   const trips = await res.json();
   localForage.setItem('trips', trips).then(function () {
     return localForage.getItem('trips');

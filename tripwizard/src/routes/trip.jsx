@@ -4,11 +4,10 @@ import {  Form,
          } from "react-router-dom";
 import { getTrip } from "../trips";
 import sunset from "../sunsetbeach.jpeg";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import localforage from "localforage";
 import { XCircleFill } from 'react-bootstrap-icons';
 
 
@@ -29,7 +28,7 @@ export default function Trip() {
     navigate('/createplan/');
   }
 
-  function toggleDetails() {
+  function toggleDetails(e) {
     setDetails(!details);
     }
     if(details) {
@@ -38,33 +37,7 @@ export default function Trip() {
         document.body.classList.remove('active-modal') 
     }
 
-//   const deleteTrip = () => {
-//     var data = tripInfo;
-    
-//     axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/', 
-//     data, 
-//     {
-//         'content-type': 'application/json'
-//     }
-//     )
-//     .then(function (response) {
-//         createTrip(response.data); // ??
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });  
-// };
-
-
-//   const deleteTrip = (id) => {
-//     client.delete(`${id}`);
-//     setTripInfo(
-//        trips.filter((trip) => {
-//           return trip.id !== id;
-//        })
-//     );
-//  };
-
+//   
   useEffect(() => {
     axios
       .get(
@@ -208,7 +181,7 @@ export default function Trip() {
                 </div>
               {details && (
                 <div className="modal">
-                  <div onClick={toggleDetails} className="overlay"></div>
+                  <div onClick={toggleDetails} className={"overlay modal-id-" + plan.id}></div>
                   <div className="modal-content">
                     <h2>Trip Details</h2>
                     <h4>{plan.name} </h4>

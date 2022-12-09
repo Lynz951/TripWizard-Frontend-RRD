@@ -1,15 +1,13 @@
 import { 
     Outlet, 
     NavLink,
-    Link, 
     useLoaderData,
-    Form,
     useNavigate,
  } from "react-router-dom";
 import { getTrips } from "../trips";
 import React from 'react';
 import "../index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 export async function loader() {
     const trips = await getTrips();

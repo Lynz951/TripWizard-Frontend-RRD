@@ -1,10 +1,8 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { createTrip } from "../trips";
-import { Navigate,
-        useNavigate,
-     } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export async function action (){
     // something else
@@ -91,14 +89,14 @@ export default function NewTripForm() {
                     <input type="text" 
                             name="description" 
                             id="Trip Description"
-                            value={tripInfo.description} onChange={handleChange}/>
-                            
+                            value={tripInfo.description} onChange={handleChange}
+                            />  
                 </div>
             </div>
             
             <button type="submit" 
                 onClick={handleSubmit}
-                    >
+            >
                     Save Trip
             </button>
             <button type="button" 

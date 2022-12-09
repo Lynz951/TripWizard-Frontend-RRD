@@ -1,6 +1,7 @@
 import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
+import axios from 'axios';
 
 
 
@@ -49,6 +50,17 @@ export async function updateTrip(id, updates) {
 }
 
 export async function deleteTrip(id) {
+
+  var data = {'trip_id': id};
+  
+  axios.delete('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/' + id)
+  .then(function (response) {
+      
+  })
+  .catch(function (error) {
+      console.log(error);
+  }); 
+    
   let tripId = Number(id);
   let trips = await localforage.getItem("trips");
   let index = trips.findIndex(trip => trip.id === tripId);

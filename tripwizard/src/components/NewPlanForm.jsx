@@ -50,6 +50,10 @@ export default function NewPlanForm() {
             notes: "",
         });
     };
+
+    const handleCancel= (event) => {
+        navigate(-1);
+    }
     
     const addPlan = () => {
         var data = planInfo;
@@ -115,14 +119,15 @@ export default function NewPlanForm() {
                 </div>
             </div>
             <button type="submit" 
-                onClick={handleSubmit}
+                onClick={() => {
+                   {handleSubmit};
+                    {handleCancel};
+                  }}
                 >
                 Save Plan
             </button>
             <button type="button" 
-                onClick={() => { 
-                navigate(-1);
-                }}
+                onClick={handleCancel}
                 >
                 Cancel
             </button>

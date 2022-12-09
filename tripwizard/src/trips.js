@@ -2,6 +2,8 @@ import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 
+
+
 export async function getTrips(query) {
   let trips = await localforage.getItem("trips");
   if (!trips) trips = [];
@@ -39,7 +41,7 @@ export async function createPlan(plan) {
 export async function updateTrip(id, updates) {
   let tripId = Number(id);
   let trips = await localforage.getItem("trips");
-  let trip = trips.find(trip => trip.id === tripId);
+  let trip = trips.findIndex(trip => trip.id === tripId);
   if (!trip) throw new Error("No trip found for", tripId);
   Object.assign(trip, updates);
   await set(trips);
@@ -47,8 +49,9 @@ export async function updateTrip(id, updates) {
 }
 
 export async function deleteTrip(id) {
+  let tripId = Number(id);
   let trips = await localforage.getItem("trips");
-  let index = trips.findIndex(trip => trip.id === id);
+  let index = trips.findIndex(trip => trip.id === tripId);
   if (index > -1) {
     trips.splice(index, 1);
     await set(trips);

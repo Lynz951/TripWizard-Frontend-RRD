@@ -18,6 +18,9 @@ import Index from "./routes/index";
 import NewTripForm from './components/NewTripForm';
 import NewPlanForm from './components/NewPlanForm';
 import localForage from "localforage";
+import { action as destroyAction } from "./routes/destroy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/");
   const trips = await res.json();
@@ -53,7 +56,11 @@ const router = createBrowserRouter([
       { 
         path: "createplan",
         element: <NewPlanForm />
-      }
+      },
+      {
+        path: "trips/:tripId/destroy",
+        action: destroyAction,
+      },
     ]
   },
 ]);

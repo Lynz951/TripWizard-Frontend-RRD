@@ -9,6 +9,7 @@ import {
 import { getTrips } from "../trips";
 import React from 'react';
 import "../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export async function loader() {
     const trips = await getTrips();
@@ -30,12 +31,15 @@ export default function Root() {
     return (
       <>
         <div id="sidebar">
+        
           <h1>Trip Wizard</h1>
           <div>
             <button type="submit" onClick={handlesubmit}>New Trip</button>
           </div>
           <nav>
+         
             <h1>My Trips</h1>
+         
           {trips.length ? (
             <ul>
               {trips.map((trip) => (

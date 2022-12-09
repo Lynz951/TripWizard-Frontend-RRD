@@ -27,12 +27,14 @@ export default function NewTripForm() {
         console.log(tripInfo);
         addTrip();
         setTripInfo({ name: "", start_date: "", end_date: "", description: ""});
+        navigate(-2);
     };
+  
     
     const addTrip = () => {
         var data = tripInfo;
         
-        axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us77.gitpod.io/api/trip/', 
+        axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/', 
         data, 
         {
             'content-type': 'application/json'
@@ -95,7 +97,7 @@ export default function NewTripForm() {
             </div>
             
             <button type="submit" 
-                    onClick={handleSubmit}
+                onClick={handleSubmit}
                     >
                     Save Trip
             </button>

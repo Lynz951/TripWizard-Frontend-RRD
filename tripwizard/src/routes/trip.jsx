@@ -8,7 +8,9 @@ import { format, compareAsc } from "date-fns";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import localforage from "localforage";
+import { XCircleFill } from 'react-bootstrap-icons';
+
 
 export async function loader({ params }) {
   return getTrip(params.tripId);
@@ -20,10 +22,48 @@ export default function Trip() {
   const endDate = format(new Date(trip.end_date), "MM/dd/yyyy");
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [details, setDetails] = useState(false);
+  console.log(details)
 
   function handlesubmit() {
     navigate('/createplan/');
   }
+
+  function toggleDetails() {
+    setDetails(!details);
+    }
+    if(details) {
+      document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal') 
+    }
+
+//   const deleteTrip = () => {
+//     var data = tripInfo;
+    
+//     axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/', 
+//     data, 
+//     {
+//         'content-type': 'application/json'
+//     }
+//     )
+//     .then(function (response) {
+//         createTrip(response.data); // ??
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });  
+// };
+
+
+//   const deleteTrip = (id) => {
+//     client.delete(`${id}`);
+//     setTripInfo(
+//        trips.filter((trip) => {
+//           return trip.id !== id;
+//        })
+//     );
+//  };
 
   useEffect(() => {
     axios
@@ -36,7 +76,6 @@ export default function Trip() {
   }, [trip]);
   console.log({ trip });
   console.log(data);
-
 
   return (
     <>
@@ -77,14 +116,16 @@ export default function Trip() {
           </div>
         </div>
       </div>
-      <div id="plans">
-        <h1>ITINERARY</h1>
+      <div id="trip">
+        <h1>Itinerary</h1><br /></div>
+        <div id="plan">
         <div>
             <button type="submit" onClick={handlesubmit}>New Plan</button>
             </div>
         <ul>
           {data.map((plan) => {
             return (
+              <>
               <li key={plan.id}>
                 {plan.plantype_id === 1 && (
                   <FontAwesomeIcon icon="fa-solid fa-plane" />
@@ -141,14 +182,14 @@ export default function Trip() {
                   <FontAwesomeIcon icon="fa-solid fa-van-shuttle" />
                 )}
 
-                <h4>{plan.name} </h4>
+                <h4><b>{plan.name} </b></h4>
                 <h5>
-                  Start Date: {plan.departure_date}
+                  <b>Start Date:</b> {plan.departure_date}
                   <br />
-                  Location: {plan.dep_location}
+                  <b>Location:</b> {plan.dep_location}
                 </h5>
                 <div className="container">
-                <button type="submit">Details</button>
+                <button type="submit" onClick={toggleDetails}>Details</button>
                 <Form action="edit">
                   <button type="submit">Edit</button>
                 </Form>
@@ -163,17 +204,49 @@ export default function Trip() {
                     }
                   }}
                 >
-                  <button type="submit">Delete</button>
                 </Form>
-               
                 </div>
+              {details && (
+                <div className="modal">
+                  <div onClick={toggleDetails} className="overlay"></div>
+                  <div className="modal-content">
+                    <h2>Trip Details</h2>
+                    <h4>{plan.name} </h4>
+                        <h5>
+                          Start Date: {plan.departure_date}
+                          <br />
+                          End Date: {plan.arrival_date}
+                          <br />
+                          Starting Location: {plan.dep_location}
+                          <br />
+                          End Location: {plan.arr_location}
+                          <br />
+                          Ticket Info: {plan.ticket_info}
+                          <br />
+                          Vehicle Info: {plan.vehicle_info}
+                          <br />
+                          Room Info: {plan.room_info}
+                          <br />
+                          Link: {plan.link}
+                          <br />
+                          Notes: {plan.notes}
+                          <br />
 
+                        </h5>
+                    <h2 className="close-modal" onClick={toggleDetails}>
+                    <XCircleFill></XCircleFill>
+                    </h2>
+                  </div>
+                </div>
+              )}
               </li>
-             
+              
+              </>
             );
           })}
         </ul>
       </div>
+
     </>
   );
 }

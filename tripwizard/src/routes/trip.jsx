@@ -3,7 +3,7 @@ import {  Form,
           useNavigate,
          } from "react-router-dom";
 import { getTrip } from "../trips";
-import sunset from "../sunsetbeach.jpeg";
+import switzerland from "../swisspic.jpg"
 import { format } from "date-fns";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -54,7 +54,7 @@ export default function Trip() {
     <>
       <div id="trip">
         <div>
-          <img src={sunset} />
+          <img src={switzerland} />
         </div>
 
         <div>

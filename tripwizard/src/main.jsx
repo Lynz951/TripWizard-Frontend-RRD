@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 import './index.css'
 import Root, {
@@ -17,23 +16,9 @@ import Trip, {
 import Index from "./routes/index";
 import NewTripForm from './components/NewTripForm';
 import NewPlanForm from './components/NewPlanForm';
-import localForage from "localforage";
 import { action as destroyAction } from "./routes/destroy";
 
-
-const res = await fetch("https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/");
-  const trips = await res.json();
-  localForage.setItem('trips', trips).then(function () {
-    return localForage.getItem('trips');
-  }).then(function (value) {
-    // we got our value
-    return value;
-  }).catch(function (err) {
-    // we got an error
-    console.log(err);
-  });
-
-
+  
 const router = createBrowserRouter([
   {
     path: "/",

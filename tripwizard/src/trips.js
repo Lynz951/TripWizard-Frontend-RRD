@@ -3,10 +3,24 @@ import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 import axios from 'axios';
 
-
-
 export async function getTrips(query) {
-  let trips = await localforage.getItem("trips");
+  let trips = await localforage.getItem("trips") || [];
+  if (trips.length === 0) {
+    const res = await fetch("https://trip-wizard-backend.ue.r.appspot.com/api/trip/");
+    trips = await res.json();
+    localforage .setItem('trips', trips)
+      .then(function () {
+        return localforage.getItem('trips');
+      })
+      .then(function (value) {
+        // we got our value
+        return value;
+      })
+      .catch(function (err) {
+        // we got an error
+        console.log(err);
+      });
+  }
   if (!trips) trips = [];
   if (query) {
     trips = matchSorter(trips, query, { keys: ["startDate", "endDate"] });
@@ -53,7 +67,7 @@ export async function deleteTrip(id) {
 
   var data = {'trip_id': id};
   
-  axios.delete('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/' + id)
+  axios.delete('https://trip-wizard-backend.ue.r.appspot.com/api/trip/' + id)
   .then(function (response) {
       
   })

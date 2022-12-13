@@ -467,7 +467,6 @@ i {
   margin: 25px !important;
 }
 
-These styles are required to make icons render reliably */
 .icon::before {
   display: inline-block;
   text-rendering: auto;

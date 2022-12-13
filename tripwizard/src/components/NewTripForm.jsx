@@ -32,7 +32,7 @@ export default function NewTripForm() {
     const addTrip = () => {
         var data = tripInfo;
         
-        axios.post('https://8000-lynz951-tripwizardbacke-gwc815o36p3.ws-us78.gitpod.io/api/trip/', 
+        axios.post('https://trip-wizard-backend.ue.r.appspot.com/api/trip/', 
         data, 
         {
             'content-type': 'application/json'
